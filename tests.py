@@ -113,6 +113,30 @@ def test_6_3():
     else:
         print('test passed')
 
+def test_7_1():
+    try:
+        assert check_letter('а')
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
+def test_7_2():
+    try:
+        assert check_letter('ё')
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
+def test_7_3():
+    try:
+        assert not check_letter('b')
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
 
 test_1()
 test_2()
@@ -126,3 +150,6 @@ test_5_2()
 test_6_1()
 test_6_2()
 test_6_3()
+test_7_1()
+test_7_2()
+test_7_3()
