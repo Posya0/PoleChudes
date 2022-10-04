@@ -16,3 +16,10 @@ def encrypt(answer):
     for i in range(0, len(answer)):
         curent_view.append('*')
     return curent_view
+
+def guess_letter(answer, curent_view, letter):
+    if letter in answer:
+        for i in range(0, len(answer)):
+            if answer[i] == letter:
+                curent_view[i] = letter
+    return curent_view
