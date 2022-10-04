@@ -41,3 +41,11 @@ def compare(curent_view):
         if curent_view[i] == '*':
             return False
     return True
+
+def check_letter(letter):
+    rus_letters = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т",
+                   "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я"]
+    if letter in rus_letters:
+        return True
+    else:
+        return False
