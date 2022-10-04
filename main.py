@@ -13,11 +13,13 @@ def get_question():
             answer = q_answer[i + 1:len(q_answer)].lower()
     return answer, question
 
+
 def encrypt(answer):
     curent_view = []
     for i in range(0, len(answer)):
         curent_view.append('*')
     return curent_view
+
 
 def guess_letter(answer, curent_view, letter):
     if letter in answer:
@@ -27,14 +29,16 @@ def guess_letter(answer, curent_view, letter):
                 curent_view[i] = letter
     else:
         print('Такой буквы нет')
-    print("слово: "+"".join(curent_view) + "\n")
+    print("слово: " + "".join(curent_view) + "\n")
     return curent_view
+
 
 def guess_word(answer, word):
     if answer == word:
         return True
     else:
         return False
+
 
 def drum(score):
     drum = [100, 200, 300, 400, 500, 600, 1000, 'Банкрот']
@@ -43,14 +47,16 @@ def drum(score):
         print('Вам выпал банкрот, ваш счет обнулился\n')
         return 0
     else:
-        print('Вам выпало ' + str(value) + '. Ваш счет: ' + str(score + value)+ '\n')
+        print('Вам выпало ' + str(value) + '. Ваш счет: ' + str(score + value) + '\n')
         return score + value
+
 
 def compare(curent_view):
     for i in range(0, len(curent_view)):
         if curent_view[i] == '*':
             return False
     return True
+
 
 def check_letter(letter):
     rus_letters = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т",
@@ -60,12 +66,13 @@ def check_letter(letter):
     else:
         return False
 
+
 def main():
     answer, question = get_question()
     score = 0
     curent_view = encrypt(answer)
     win = False
-    print(question+ '? '+ "".join(curent_view) + '\n')
+    print(question + '? ' + "".join(curent_view) + '\n')
     while True:
         print('Вращайте барабан')
         time.sleep(2)
@@ -76,7 +83,7 @@ def main():
             if guess_word(answer, word):
                 win = True
             else:
-                print('\nНеверно. Вы проиграли, ваш счет: '+ str(score))
+                print('\nНеверно. Вы проиграли, ваш счет: ' + str(score))
                 break
         else:
             letter = ''
@@ -87,7 +94,8 @@ def main():
                 win = True
             time.sleep(2)
         if win:
-            print('Вы победили со счетом: '+ str(score))
+            print('Вы победили со счетом: ' + str(score))
             break
+
 
 main()
