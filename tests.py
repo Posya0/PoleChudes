@@ -9,4 +9,14 @@ def test_1():
     else:
         print('test passed')
 
+def test_2():
+    try:
+        t = encrypt('well')
+        assert t == ['*','*','*','*']
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
 test_1()
+test_2()
