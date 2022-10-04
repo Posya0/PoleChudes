@@ -35,3 +35,9 @@ def drum(score, value):
         return 0
     else:
         return score + value
+
+def compare(curent_view):
+    for i in range(0, len(curent_view)):
+        if curent_view[i] == '*':
+            return False
+    return True
