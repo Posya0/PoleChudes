@@ -1,4 +1,5 @@
 import random
+import time
 
 
 def get_question(number_q):
@@ -49,3 +50,37 @@ def check_letter(letter):
         return True
     else:
         return False
+
+def main():
+    answer, question = get_question(random.randrange(0, 1))
+    score = 0
+    curent_view = encrypt(answer)
+    win = False
+    print(question+ '? '+ "".join(curent_view))
+    while True:
+        print('Вращайте барабан')
+        time.sleep(2)
+        l_drum = [100, 200, 500, 'Банкрот']
+        value = l_drum[random.randrange(0, len(l_drum))]
+        score = drum(score, value)
+        tem = input('Вы готовы назвать слово? ').lower()
+        if tem == 'да':
+            word = input('Ввыедите слово ').lower()
+            if guess_word(answer, word):
+                win = True
+            else:
+                print('Неверно. Вы проиграли, ваш счет: '+ str(score))
+                break
+        else:
+            letter = ''
+            while not check_letter(letter):
+                letter = input('Введите букву ').lower()
+            curent_view = guess_letter(answer, curent_view, letter)
+            if compare(curent_view):
+                win = True
+            time.sleep(2)
+        if win:
+            print('Вы победили со счетом: '+ str(score))
+            break
+
+main()
