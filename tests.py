@@ -62,6 +62,33 @@ def test_4_2():
     else:
         print('test passed')
 
+def test_5_1():
+    try:
+        t = drum(100, 100)
+        assert t == 200
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
+def test_5_2():
+    try:
+        t = drum(0, 1000)
+        assert t == 1000
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
+def test_5_2():
+    try:
+        t = drum(1000, 'Банкрот')
+        assert t == 0
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
 
 test_1()
 test_2()
@@ -70,3 +97,5 @@ test_3_2()
 test_3_3()
 test_4_1()
 test_4_2()
+test_5_1()
+test_5_2()
