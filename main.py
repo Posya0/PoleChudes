@@ -23,3 +23,9 @@ def guess_letter(answer, curent_view, letter):
             if answer[i] == letter:
                 curent_view[i] = letter
     return curent_view
+
+def guess_word(answer, word):
+    if answer == word:
+        return True
+    else:
+        return False
