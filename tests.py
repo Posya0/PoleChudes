@@ -89,6 +89,30 @@ def test_5_2():
     else:
         print('test passed')
 
+def test_6_1():
+    try:
+        assert not compare(['*','*','*','*'])
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
+def test_6_2():
+    try:
+        assert compare(['w','o','r','d'])
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
+def test_6_3():
+    try:
+        assert not compare(['w','o','*','d'])
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
 
 test_1()
 test_2()
@@ -99,3 +123,6 @@ test_4_1()
 test_4_2()
 test_5_1()
 test_5_2()
+test_6_1()
+test_6_2()
+test_6_3()
