@@ -29,3 +29,9 @@ def guess_word(answer, word):
         return True
     else:
         return False
+
+def drum(score, value):
+    if value == 'Банкрот':
+        return 0
+    else:
+        return score + value
