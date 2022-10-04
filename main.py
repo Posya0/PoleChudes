@@ -11,3 +11,8 @@ def get_question(number_q):
             answer = q_answer[i + 1:len(q_answer)].lower()
     return answer, question
 
+def encrypt(answer):
+    curent_view = []
+    for i in range(0, len(answer)):
+        curent_view.append('*')
+    return curent_view
