@@ -2,9 +2,10 @@ import random
 import time
 
 
-def get_question(number_q):
+def get_question():
     with open('question.txt', 'r', encoding='utf-8') as f:
         q_list = f.read().splitlines()
+    number_q = random.randrange(0, len(q_list))
     q_answer = str(q_list[number_q])
     for i in range(0, len(q_answer)):
         if q_answer[i] == ';':
@@ -20,9 +21,13 @@ def encrypt(answer):
 
 def guess_letter(answer, curent_view, letter):
     if letter in answer:
+        print('Такая буква есть!')
         for i in range(0, len(answer)):
             if answer[i] == letter:
                 curent_view[i] = letter
+    else:
+        print('Такой буквы нет')
+    print("слово: "+"".join(curent_view) + "\n")
     return curent_view
 
 def guess_word(answer, word):
@@ -31,10 +36,14 @@ def guess_word(answer, word):
     else:
         return False
 
-def drum(score, value):
+def drum(score):
+    drum = [100, 200, 300, 400, 500, 600, 1000, 'Банкрот']
+    value = drum[random.randrange(0, len(drum))]
     if value == 'Банкрот':
+        print('Вам выпал банкрот, ваш счет обнулился\n')
         return 0
     else:
+        print('Вам выпало ' + str(value) + '. Ваш счет: ' + str(score + value)+ '\n')
         return score + value
 
 def compare(curent_view):
@@ -52,24 +61,22 @@ def check_letter(letter):
         return False
 
 def main():
-    answer, question = get_question(random.randrange(0, 1))
+    answer, question = get_question()
     score = 0
     curent_view = encrypt(answer)
     win = False
-    print(question+ '? '+ "".join(curent_view))
+    print(question+ '? '+ "".join(curent_view) + '\n')
     while True:
         print('Вращайте барабан')
         time.sleep(2)
-        l_drum = [100, 200, 500, 'Банкрот']
-        value = l_drum[random.randrange(0, len(l_drum))]
-        score = drum(score, value)
+        score = drum(score)
         tem = input('Вы готовы назвать слово? ').lower()
         if tem == 'да':
             word = input('Ввыедите слово ').lower()
             if guess_word(answer, word):
                 win = True
             else:
-                print('Неверно. Вы проиграли, ваш счет: '+ str(score))
+                print('\nНеверно. Вы проиграли, ваш счет: '+ str(score))
                 break
         else:
             letter = ''
