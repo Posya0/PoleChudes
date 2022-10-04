@@ -18,5 +18,15 @@ def test_2():
     else:
         print('test passed')
 
+def test_3():
+    try:
+        t = guess_letter('word', ['*','*','*','*'], 'o')
+        assert t == ['*','o','*','*']
+    except:
+        print('test error')
+    else:
+        print('test passed')
+
 test_1()
 test_2()
+test_3()
